@@ -7,10 +7,18 @@
      })
   }
 
-  function RetrieveFlags(countryObj){
-   for(num in countryObj){
-    createDivs(countryObj[num].flags.svg,countryObj[num].name.common,countryObj[num].population,
-        countryObj[num].region)
+  function RetrieveCountryData(countryObj){
+ 
+function SortArray(x, y){
+    if (x.name.common < y.name.common) {return -1;}
+    if (x.name.common > y.name.common) {return 1;}
+    return 0;
+}
+let sortedObj = countryObj.sort(SortArray);
+
+     for(num in sortedObj){
+    createDivs(sortedObj[num].flags.svg,sortedObj[num].name.common,sortedObj[num].population,
+        sortedObj[num].region)
 
     }
   }
@@ -67,18 +75,51 @@
     //changing values
     img.src = image; 
     countryName.innerText = name
-    span1.innerText ="Population: " + populacion
-    span2.innerText ="Region: " + region
-    span3.innerText = "Capital: " + capital
+    span1.innerText ="Population:"
+    span2.innerText ="Region:" 
+    span3.innerText = "Capital:" 
+    listDetailsliPopulacion.children[1].innerText = populacion;
+    listDetailsliRegion.children[1].innerText = region;
+    listDetailsliCapital.children[1].innerText = capital
 
 
 containerDiv.appendChild(containerTextStuff)
 
-
 let body = document.getElementById("countryGridTotal")
 body.appendChild(containerDiv)
   }
+data123(RetrieveCountryData)
 
-data123(RetrieveFlags)
+const inputValue = document.getElementById("inputCountry")
+inputValue.addEventListener("input",function(e){
+    deleteChild()
 
-   
+    console.log(e.target.value)
+    function getCountry(data){ //function que hace todo
+        let modObj=[];
+        for(num in data){
+            if(data[num].name.common.toLowerCase().includes(e.target.value)){
+                modObj.push(data[num])
+            }
+            
+        }
+        
+        for(num in modObj){
+            createDivs(modObj[num].flags.svg,modObj[num].name.common,modObj[num].population,
+                modObj[num].region)
+            }
+            console.log(modObj)
+    }
+    data123(getCountry)
+})
+let test
+function deleteChild() {
+    var e  = document.getElementById("countryGridTotal")
+    
+    //e.firstElementChild can be used.
+    var child = e.lastElementChild; 
+    while (child) {
+        e.removeChild(child);
+        child = e.lastElementChild;
+    }
+}
