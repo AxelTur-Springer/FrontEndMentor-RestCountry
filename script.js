@@ -6,15 +6,15 @@
         callback(data)
      })
   }
-
-  function RetrieveCountryData(countryObj){
-    deleteChild()
-
-function SortArray(x, y){
+  function SortArray(x, y){
     if (x.name.common < y.name.common) {return -1;}
     if (x.name.common > y.name.common) {return 1;}
     return 0;
 }
+  function RetrieveCountryData(countryObj){
+    deleteChild()
+
+
 let sortedObj = countryObj.sort(SortArray);
 
      for(num in sortedObj){
@@ -132,3 +132,51 @@ function deleteChild() {
         child = e.lastElementChild;
     }
 }
+
+const select = document.getElementById('Options');
+    let regionOb =[];
+    let modRegionObj =[];
+
+select.addEventListener("click",(e)=>{
+    let value = select.options[select.selectedIndex].value;
+    
+        function order(){
+            value = select.options[select.selectedIndex].value
+            if(value !== "selector"){
+                data123(creatorRegion)
+
+            }else{
+                data123(RetrieveCountryData)
+
+             }
+
+        }
+ 
+ 
+ function creatorRegion(data){
+    modRegionObj =[];
+        for(num in data){
+            if(data[num].region === value){
+                modRegionObj.push(data[num])
+             }
+        }
+    console.log(modRegionObj)
+    divcreator()
+    value = select.options[select.selectedIndex].value = "selector"
+
+ }
+
+
+function divcreator(){
+    deleteChild()
+    let sortedObjRegion = modRegionObj.sort(SortArray);
+
+    for(num in sortedObjRegion){
+        createDivs(sortedObjRegion[num].flags.svg,sortedObjRegion[num].name.common,sortedObjRegion[num].population,
+            sortedObjRegion[num].region)
+        }
+}
+    order()
+    
+}
+)

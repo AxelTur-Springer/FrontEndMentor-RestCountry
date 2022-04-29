@@ -49,6 +49,12 @@ width: 25em;
     outline: none;
     
 }
+
+.filter select{
+    border: none;
+    padding: 1em 1.5em;
+    border-radius: 5px;
+}
 .countryGridTotal{
     display: grid;
     grid-gap: 5em;
