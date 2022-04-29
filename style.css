@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 body{
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
 }
 .nav{
     display: flex;
@@ -55,6 +56,17 @@ width: 25em;
     padding: 1em 1.5em;
     border-radius: 5px;
 }
+
+
+.divDark button{
+    display: flex;
+    justify-content: space-between;
+    width: 7em;
+    padding: 0.3em;
+    background-color: inherit;
+    border: solid lightblue;
+    border-radius: 5px;
+}
 .countryGridTotal{
     display: grid;
     grid-gap: 5em;
@@ -70,6 +82,7 @@ ul{
     flex-direction: column;
     justify-content: space-between;
     background-color: white;
+    box-shadow: 0px 0px 5px 0.5px rgba(64, 64, 64, 0.308);
     border-radius: 5px;
     width: 19em;
  
@@ -101,4 +114,12 @@ display: flex;
 }
 .listDetail span{
     font-weight: bolder;
+}
+.darkmode{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+    width: 19em;
+    background-color: rgb(52, 52, 52);
 }
