@@ -8,7 +8,8 @@
   }
 
   function RetrieveCountryData(countryObj){
- 
+    deleteChild()
+
 function SortArray(x, y){
     if (x.name.common < y.name.common) {return -1;}
     if (x.name.common > y.name.common) {return 1;}
@@ -92,32 +93,40 @@ data123(RetrieveCountryData)
 
 const inputValue = document.getElementById("inputCountry")
 inputValue.addEventListener("input",function(e){
-    deleteChild()
+    let modObj=[];
+    let oriObj;
+    async function testing() {
+        const response = await fetch("https://restcountries.com/v3.1/all")
+        const obj = await response.json();
+        oriObj = obj
+        console.log(oriObj)
+        if(e.target.value.length > 1){
+            deleteChild()
+            getCountry()
+        }else{
+            data123(RetrieveCountryData)
 
-    console.log(e.target.value)
-    function getCountry(data){ //function que hace todo
-        let modObj=[];
-        for(num in data){
-            if(data[num].name.common.toLowerCase().includes(e.target.value)){
-                modObj.push(data[num])
-            }
-            
         }
-        
+    }
+
+    function getCountry(){ //function que hace todo
+        for(num in oriObj){
+            if(oriObj[num].name.common.toLowerCase().includes(e.target.value)){
+                modObj.push(oriObj[num])
+            }
+        }
         for(num in modObj){
             createDivs(modObj[num].flags.svg,modObj[num].name.common,modObj[num].population,
-                modObj[num].region)
+            modObj[num].region)
             }
-            console.log(modObj)
     }
-    data123(getCountry)
+testing()
 })
-let test
+
 function deleteChild() {
-    var e  = document.getElementById("countryGridTotal")
-    
+    let e  = document.getElementById("countryGridTotal")
     //e.firstElementChild can be used.
-    var child = e.lastElementChild; 
+   let child = e.lastElementChild; 
     while (child) {
         e.removeChild(child);
         child = e.lastElementChild;
