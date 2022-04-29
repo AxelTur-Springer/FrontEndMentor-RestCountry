@@ -1,5 +1,4 @@
-
-  function data123(callback){
+function data123(callback){
     fetch("https://restcountries.com/v3.1/all")
     .then(response => response.json())
     .then(data=>{
@@ -91,73 +90,8 @@ body.appendChild(containerDiv)
   }
 data123(RetrieveCountryData)
 
-
-
-
-
-let modObj=[];
-let valueinner = "";
 const inputValue = document.getElementById("inputCountry")
 inputValue.addEventListener("input",function(e){
-<<<<<<< HEAD
-    valueinner =e.target.value.toLowerCase()
-    if(valueinner.length!== 0){
-        modObj=[]  
-        data123(pushToObj)
-    }else{
-        deleteChild()
-        data123(RetrieveCountryData)
-
-    }
-
-
-
-
-
-
-    
-    
-
-
-
-
-    //functionCreateDivs
-
- 
-
-
-    
-})
-
-function pushToObj(data){
-modObj=[]
-for(num in data){
-    let currentObj = data[num].name.common;
-    if(currentObj.toLowerCase().includes(valueinner)){
-modObj.push(data[num])
-    }
-}
-console.log(modObj)
-creatDivNew()
-}
-
-
-
-
-function creatDivNew(){
-    deleteChild()
-    for(num in modObj){
-        createDivs(modObj[num].flags.svg,modObj[num].name.common,modObj[num].population,
-            modObj[num].region)
-        }
-        modObj=[]  
-
-}
-
-
-
-
-=======
     let modObj=[];
     let oriObj;
     async function testing() {
@@ -188,7 +122,6 @@ function creatDivNew(){
 testing()
 })
 
->>>>>>> 13a5d3fb5dabdf5cb6410a896e5031837c8f0da8
 function deleteChild() {
     let e  = document.getElementById("countryGridTotal")
     //e.firstElementChild can be used.
