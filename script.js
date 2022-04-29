@@ -90,29 +90,71 @@ body.appendChild(containerDiv)
   }
 data123(RetrieveCountryData)
 
+
+
+
+
+let modObj=[];
+let valueinner = "";
 const inputValue = document.getElementById("inputCountry")
 inputValue.addEventListener("input",function(e){
-    deleteChild()
+    valueinner =e.target.value.toLowerCase()
+    if(valueinner.length!== 0){
+        modObj=[]  
+        data123(pushToObj)
+    }else{
+        deleteChild()
+        data123(RetrieveCountryData)
 
-    console.log(e.target.value)
-    function getCountry(data){ //function que hace todo
-        let modObj=[];
-        for(num in data){
-            if(data[num].name.common.toLowerCase().includes(e.target.value)){
-                modObj.push(data[num])
-            }
-            
-        }
-        
-        for(num in modObj){
-            createDivs(modObj[num].flags.svg,modObj[num].name.common,modObj[num].population,
-                modObj[num].region)
-            }
-            console.log(modObj)
     }
-    data123(getCountry)
+
+
+
+
+
+
+    
+    
+
+
+
+
+    //functionCreateDivs
+
+ 
+
+
+    
 })
-let test
+
+function pushToObj(data){
+modObj=[]
+for(num in data){
+    let currentObj = data[num].name.common;
+    if(currentObj.toLowerCase().includes(valueinner)){
+modObj.push(data[num])
+    }
+}
+console.log(modObj)
+creatDivNew()
+}
+
+
+
+
+function creatDivNew(){
+    deleteChild()
+    for(num in modObj){
+        createDivs(modObj[num].flags.svg,modObj[num].name.common,modObj[num].population,
+            modObj[num].region)
+        }
+        modObj=[]  
+
+}
+
+
+
+
 function deleteChild() {
     var e  = document.getElementById("countryGridTotal")
     
