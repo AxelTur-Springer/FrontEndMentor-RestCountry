@@ -6,14 +6,15 @@
         callback(data)
      })
   }
-
-  function RetrieveCountryData(countryObj){
- 
-function SortArray(x, y){
+  function SortArray(x, y){
     if (x.name.common < y.name.common) {return -1;}
     if (x.name.common > y.name.common) {return 1;}
     return 0;
 }
+  function RetrieveCountryData(countryObj){
+    deleteChild()
+
+
 let sortedObj = countryObj.sort(SortArray);
 
      for(num in sortedObj){
@@ -98,6 +99,7 @@ let modObj=[];
 let valueinner = "";
 const inputValue = document.getElementById("inputCountry")
 inputValue.addEventListener("input",function(e){
+<<<<<<< HEAD
     valueinner =e.target.value.toLowerCase()
     if(valueinner.length!== 0){
         modObj=[]  
@@ -155,13 +157,92 @@ function creatDivNew(){
 
 
 
+=======
+    let modObj=[];
+    let oriObj;
+    async function testing() {
+        const response = await fetch("https://restcountries.com/v3.1/all")
+        const obj = await response.json();
+        oriObj = obj
+        console.log(oriObj)
+        if(e.target.value.length > 1){
+            deleteChild()
+            getCountry()
+        }else{
+            data123(RetrieveCountryData)
+
+        }
+    }
+
+    function getCountry(){ //function que hace todo
+        for(num in oriObj){
+            if(oriObj[num].name.common.toLowerCase().includes(e.target.value)){
+                modObj.push(oriObj[num])
+            }
+        }
+        for(num in modObj){
+            createDivs(modObj[num].flags.svg,modObj[num].name.common,modObj[num].population,
+            modObj[num].region)
+            }
+    }
+testing()
+})
+
+>>>>>>> 13a5d3fb5dabdf5cb6410a896e5031837c8f0da8
 function deleteChild() {
-    var e  = document.getElementById("countryGridTotal")
-    
+    let e  = document.getElementById("countryGridTotal")
     //e.firstElementChild can be used.
-    var child = e.lastElementChild; 
+   let child = e.lastElementChild; 
     while (child) {
         e.removeChild(child);
         child = e.lastElementChild;
     }
 }
+
+const select = document.getElementById('Options');
+    let regionOb =[];
+    let modRegionObj =[];
+
+select.addEventListener("click",(e)=>{
+    let value = select.options[select.selectedIndex].value;
+    
+        function order(){
+            value = select.options[select.selectedIndex].value
+            if(value !== "selector"){
+                data123(creatorRegion)
+
+            }else{
+                data123(RetrieveCountryData)
+
+             }
+
+        }
+ 
+ 
+ function creatorRegion(data){
+    modRegionObj =[];
+        for(num in data){
+            if(data[num].region === value){
+                modRegionObj.push(data[num])
+             }
+        }
+    console.log(modRegionObj)
+    divcreator()
+    value = select.options[select.selectedIndex].value = "selector"
+
+ }
+
+
+function divcreator(){
+    deleteChild()
+    let sortedObjRegion = modRegionObj.sort(SortArray);
+
+    for(num in sortedObjRegion){
+        createDivs(sortedObjRegion[num].flags.svg,sortedObjRegion[num].name.common,sortedObjRegion[num].population,
+            sortedObjRegion[num].region)
+        }
+}
+    order()
+    
+}
+)
