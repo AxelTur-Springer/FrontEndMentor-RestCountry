@@ -28,7 +28,7 @@ body{
     padding: 3em;
 }
 .formSearch{
-    height: 5em;
+    height: 2.8em;
 }
 .formLupa{
 background-color: white;
@@ -48,24 +48,30 @@ width: 25em;
     padding: 0px;
     border: none;
     outline: none;
+
     
 }
 
 .filter select{
-    border: none;
+    border: solid black 2px;
     padding: 1em 1.5em;
     border-radius: 5px;
+    outline: none;
 }
 
 
 .divDark button{
     display: flex;
     justify-content: space-between;
-    width: 7em;
-    padding: 0.3em;
+    width: 8.5em;
+    padding: 0.6em;
     background-color: inherit;
-    border: solid lightblue;
+    border: solid rgb(0, 0, 0);
     border-radius: 5px;
+    font-weight:600;
+}
+.divDark button img {
+    width: 1.1em;
 }
 .countryGridTotal{
     display: grid;
