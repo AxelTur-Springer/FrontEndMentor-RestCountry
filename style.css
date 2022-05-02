@@ -160,6 +160,9 @@ color: white;
     justify-content: space-around;
     margin-bottom: 15em;
 }
+.namePopUp{
+    font-size: 2em;
+}
 /* mobile*/
 @media (max-width: 680px){
     .nav{

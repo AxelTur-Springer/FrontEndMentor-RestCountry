@@ -287,14 +287,20 @@ function createPopUp(obj){
   //console.log(obj)
 let name = obj[0].name.common
 let nativeName = obj[0].name.official
-let populacion= obj[0].populacion
-let Region = obj[0].region
+let populacionInPopUp= obj[0].population
+let RegionInPopUp = obj[0].region
 let subRegion= obj[0].subregion
-let capital= obj[0].capital[0]
+let capitalInPopUp= obj[0].capital[0]
 let domain= obj[0].tld[0]
 //let languages= obj[0].name.common
 let currencies= obj[0]
 // putting together
 nameDivinPopUp[0].children[0].innerText = name;
 list1[0].children[0].children[0].innerText = `Native Name: ${nativeName}`
-console.log(list1[0].children)}
+list1[0].children[0].children[1].innerText = `Populacion: ${populacionInPopUp}`
+list1[0].children[0].children[2].innerText = `Region: ${RegionInPopUp}`
+list1[0].children[0].children[3].innerText = `Sub Region: ${subRegion}`
+list1[0].children[0].children[4].innerText = `Capital: ${capitalInPopUp}`
+
+
+console.log(populacionInPopUp)}
