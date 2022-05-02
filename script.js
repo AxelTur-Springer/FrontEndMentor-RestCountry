@@ -5,11 +5,13 @@ function data123(callback) {
       callback(data);
     });
 }
+
 function SortArray(x, y) {
   if (x.name.common < y.name.common) { return -1; }
   if (x.name.common > y.name.common) { return 1; }
   return 0;
 }
+// main creator of divs
 function RetrieveCountryData(countryObj) {
   deleteChild();
   const sortedObj = countryObj.sort(SortArray);
@@ -34,6 +36,7 @@ function RetrieveCountryData(countryObj) {
       );
     }
   }
+  addingevent()
 
 
 }
@@ -94,7 +97,6 @@ function createDivs(image, name, populacion, region, capital) {
   listDetailsliCapital.children[1].innerText = capital;
 
   containerDiv.appendChild(containerTextStuff);
-
   const body = document.getElementById('countryGridTotal');
   body.appendChild(containerDiv);
 }
@@ -155,6 +157,8 @@ inputValue.addEventListener('input', (e) => {
     
   testing();
 });
+
+// deleting divs creted
 
 function deleteChild() {
   const e = document.getElementById('countryGridTotal');
@@ -261,3 +265,14 @@ DarkOrLight.addEventListener("click",(e)=>{
     }
    
 })
+
+let countrysToAddEvent = document.getElementById("countryGridTotal");
+function addingevent(){
+  for(let i = 0 ; i< countrysToAddEvent.children.length;i++){
+  countrysToAddEvent.children[i].addEventListener("click",createInfoPop)
+  }
+
+} 
+function createInfoPop(e){
+  console.log(e.target.children[1].children[0].innerText)
+}
