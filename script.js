@@ -269,5 +269,32 @@ function addingevent(){
 
 } 
 function createInfoPop(e){
-  console.log(e.target.children[1].children[0].innerText)
-}
+  let targetCountry = e.target.children[1].children[0].innerText;
+  let countryData;
+  //
+   async function bringingContryInfo(){
+     const response = await fetch(`https://restcountries.com/v3.1/name/${targetCountry}?fullText=true`)
+     const obj = await response.json();
+     createPopUp(obj)
+    }
+bringingContryInfo()
+
+  }
+function createPopUp(obj){
+  const nameDivinPopUp = document.getElementsByClassName("namePopUp")
+  const list1 = document.getElementsByClassName("info1")
+  const list2 = document.getElementsByClassName("info2")
+  //console.log(obj)
+let name = obj[0].name.common
+let nativeName = obj[0].name.official
+let populacion= obj[0].populacion
+let Region = obj[0].region
+let subRegion= obj[0].subregion
+let capital= obj[0].capital[0]
+let domain= obj[0].tld[0]
+//let languages= obj[0].name.common
+let currencies= obj[0]
+// putting together
+nameDivinPopUp[0].children[0].innerText = name;
+list1[0].children[0].children[0].innerText = `Native Name: ${nativeName}`
+console.log(list1[0].children)}
