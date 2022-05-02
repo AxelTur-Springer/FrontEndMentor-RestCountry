@@ -15,30 +15,28 @@ function SortArray(x, y) {
 function RetrieveCountryData(countryObj) {
   deleteChild();
   const sortedObj = countryObj.sort(SortArray);
-  if(modRegionObj.length !== 0){
-      for (num in modRegionObj) {
+  if (modRegionObj.length !== 0) {
+    for (num in modRegionObj) {
       createDivs(
         modRegionObj[num].flags.svg,
         modRegionObj[num].name.common,
         modRegionObj[num].population,
         modRegionObj[num].region,
-        modRegionObj[num].capital
+        modRegionObj[num].capital,
       );
     }
-  }else{
+  } else {
     for (num in sortedObj) {
       createDivs(
         sortedObj[num].flags.svg,
         sortedObj[num].name.common,
         sortedObj[num].population,
         sortedObj[num].region,
-        sortedObj[num].capital
+        sortedObj[num].capital,
       );
     }
   }
-  addingevent()
-
-
+  addingevent();
 }
 function createDivs(image, name, populacion, region, capital) {
   // creating elements
@@ -108,6 +106,7 @@ const inputValue = document.getElementById('inputCountry');
 inputValue.addEventListener('input', (e) => {
   const modObj = [];
   let oriObj;
+  // demostracion async
   async function testing() {
     const response = await fetch('https://restcountries.com/v3.1/all');
     const obj = await response.json();
@@ -121,7 +120,7 @@ inputValue.addEventListener('input', (e) => {
   }
 
   function getCountry() {
-    if(modRegionObj.length === 0){
+    if (modRegionObj.length === 0) {
       for (num in oriObj) {
         if (oriObj[num].name.common.toLowerCase().includes(e.target.value.toLowerCase())) {
           modObj.push(oriObj[num]);
@@ -133,14 +132,13 @@ inputValue.addEventListener('input', (e) => {
           modObj[num].name.common,
           modObj[num].population,
           modObj[num].region,
-          modObj[num].capital
+          modObj[num].capital,
         );
       }
-    }else{
+    } else {
       for (num in modRegionObj) {
         if (modRegionObj[num].name.common.toLowerCase().includes(e.target.value.toLowerCase())) {
-         modObj.push(modRegionObj[num]);
-     
+          modObj.push(modRegionObj[num]);
         }
       }
       for (num in modObj) {
@@ -149,12 +147,12 @@ inputValue.addEventListener('input', (e) => {
           modObj[num].name.common,
           modObj[num].population,
           modObj[num].region,
-          modObj[num].capital
+          modObj[num].capital,
         );
       }
     }
-    } 
-    
+  }
+
   testing();
 });
 
@@ -162,7 +160,6 @@ inputValue.addEventListener('input', (e) => {
 
 function deleteChild() {
   const e = document.getElementById('countryGridTotal');
-  // e.firstElementChild can be used.
   let child = e.lastElementChild;
   while (child) {
     e.removeChild(child);
@@ -175,22 +172,18 @@ const select = document.getElementById('Options');
 const regionOb = [];
 let modRegionObj = [];
 
-select.addEventListener("change", (e) => {
-  let { value } = select.options[select.selectedIndex];
+select.addEventListener('click', (e) => {
+  let value = select.options[select.selectedIndex];
   function order() {
     value = select.options[select.selectedIndex].value;
-    console.log(value)
-   if(value==="none"){
-       //"do nothing"
-   }
-    else if (value === 'selector') {
-      modRegionObj =[]
+    if (value === 'none') {
+      // "do nothing"
+    } else if (value === 'selector') {
+      modRegionObj = [];
       data123(RetrieveCountryData);
-      //select.selectedIndex = 0
-
-    } else if(value !== "none") {
+      select.selectedIndex = 0;
+    } else if (value !== 'none') {
       data123(creatorRegion);
-
     }
   }
   function creatorRegion(data) {
@@ -212,71 +205,65 @@ select.addEventListener("change", (e) => {
         sortedObjRegion[num].name.common,
         sortedObjRegion[num].population,
         sortedObjRegion[num].region,
-        sortedObjRegion[num].capital
+        sortedObjRegion[num].capital,
       );
     }
-    
   }
   order();
 });
 
 // managing darkMode :)
-let className = "Countrys"
+let className = 'Countrys';
 
-let DarkOrLight = document.getElementById("DarkOrLight")
-DarkOrLight.addEventListener("click",(e)=>{
-        const navbar = document.getElementsByClassName("nav")
-        const body = document.getElementsByTagName("body")
-        const darkModeBtn = document.getElementsByClassName("divDark")
-        let divsWhite = document.querySelectorAll(".Countrys")
-        let divsDark =document.querySelectorAll(".darkmode")
-      
-      if(className=== "Countrys"){
-            className = "darkmode"
-            body[0].style.backgroundColor =" rgb(22, 21, 29)"
-            body[0].style.color ="white"
-            navbar[0].style.backgroundColor ="rgb(52, 52, 52)"
-            navbar[0].style.boxShadow ="none"
-            darkModeBtn[0].children[0].style.backgroundColor = "white"
-            darkModeBtn[0].children[0].style.color="black"
-            darkModeBtn[0].children[0].children[1].innerText = "Light Mode"
-            darkModeBtn[0].children[0].style.border =" solid white" 
-            darkModeBtn[0].children[0].children[0].src ="https://cdn-icons-png.flaticon.com/512/1829/1829191.png"
+const DarkOrLight = document.getElementById('DarkOrLight');
+DarkOrLight.addEventListener('click', (e) => {
+  const navbar = document.getElementsByClassName('nav');
+  const body = document.getElementsByTagName('body');
+  const darkModeBtn = document.getElementsByClassName('divDark');
+  const divsWhite = document.querySelectorAll('.Countrys');
+  const divsDark = document.querySelectorAll('.darkmode');
 
-        for(let i = 0 ; i < divsWhite.length; i++){
-            divsWhite[i].className = "darkmode"
-        }
-    }else if(className==="darkmode"){
-      className = "Countrys"
-      body[0].style.backgroundColor =" rgb(22, 21, 29)"
-      body[0].style.color ="white"
-      navbar[0].style.backgroundColor ="white"
-      navbar[0].style.boxShadow ="0px 0px 10px 10px rgb(221, 221, 221)"
-      body[0].style.backgroundColor ="white"
-      body[0].style.color ="black"
-      darkModeBtn[0].children[0].children[1].innerText = "Dark Mode"
-      darkModeBtn[0].children[0].style.border =" solid black" 
-      darkModeBtn[0].children[0].style.backgroundColor = "white"
-      darkModeBtn[0].children[0].style.color="black"
-      darkModeBtn[0].children[0].children[0].src ="https://cdn-icons.flaticon.com/png/512/5758/premium/5758839.png?token=exp=1651531016~hmac=bfe5d059f4adbc65638260b70d4b2623"
+  if (className === 'Countrys') {
+    className = 'darkmode';
+    body[0].style.backgroundColor = ' rgb(22, 21, 29)';
+    body[0].style.color = 'white';
+    navbar[0].style.backgroundColor = 'rgb(52, 52, 52)';
+    navbar[0].style.boxShadow = 'none';
+    darkModeBtn[0].children[0].style.backgroundColor = 'white';
+    darkModeBtn[0].children[0].style.color = 'black';
+    darkModeBtn[0].children[0].children[1].innerText = 'Light Mode';
+    darkModeBtn[0].children[0].style.border = ' solid white';
+    darkModeBtn[0].children[0].children[0].src = 'https://cdn-icons-png.flaticon.com/512/1829/1829191.png';
 
-
-        for(let i = 0 ; i < divsDark.length; i++){
-          divsDark[i].className = className
-        }
-
-
+    for (let i = 0; i < divsWhite.length; i++) {
+      divsWhite[i].className = 'darkmode';
     }
-   
-})
+  } else if (className === 'darkmode') {
+    className = 'Countrys';
+    body[0].style.backgroundColor = ' rgb(22, 21, 29)';
+    body[0].style.color = 'white';
+    navbar[0].style.backgroundColor = 'white';
+    navbar[0].style.boxShadow = '0px 0px 10px 10px rgb(221, 221, 221)';
+    body[0].style.backgroundColor = 'white';
+    body[0].style.color = 'black';
+    darkModeBtn[0].children[0].children[1].innerText = 'Dark Mode';
+    darkModeBtn[0].children[0].style.border = ' solid black';
+    darkModeBtn[0].children[0].style.backgroundColor = 'white';
+    darkModeBtn[0].children[0].style.color = 'black';
+    darkModeBtn[0].children[0].children[0].src = 'https://cdn-icons.flaticon.com/png/512/5758/premium/5758839.png?token=exp=1651531016~hmac=bfe5d059f4adbc65638260b70d4b2623';
 
-let countrysToAddEvent = document.getElementById("countryGridTotal");
-function addingevent(){
-  for(let i = 0 ; i< countrysToAddEvent.children.length;i++){
-  countrysToAddEvent.children[i].addEventListener("click",createInfoPop)
+    for (let i = 0; i < divsDark.length; i++) {
+      divsDark[i].className = className;
+    }
   }
+});
 
-} 
-function createInfoPop(e){
-  console.log(e.target.children[1].children[0].innerText)
+const countrysToAddEvent = document.getElementById('countryGridTotal');
+function addingevent() {
+  for (let i = 0; i < countrysToAddEvent.children.length; i++) {
+    countrysToAddEvent.children[i].addEventListener('click', createInfoPop);
+  }
+}
+function createInfoPop(e) {
+  console.log(e.target.children[1].children[0].innerText);
 }
