@@ -143,3 +143,42 @@ display: flex;
     width: 19em;
     background-color: rgb(52, 52, 52);
 }
+
+
+/* mobile*/
+@media (max-width: 680px){
+    .nav{
+        height: 5em;
+
+font-size: small;    }
+    .searchAndFilter{
+    padding: 1em 0em;
+    justify-content: space-around;
+    }
+    .formSearch{
+        height: 2em;
+    }
+    .formLupa{
+
+  width: 12em;
+
+    }
+    .formLupa i {
+        margin-left: 0px;
+    }
+    .formSearch input{
+        /*background-image: url(/Assets/lupa.png);
+        background-size: contain;
+        background-repeat: no-repeat;*/
+        height: 3em;
+        width: 12em;
+        margin-left: 5px;
+    
+        
+    }
+    
+    .filter select{
+        padding: 1em 1.5em;
+
+    }
+}
