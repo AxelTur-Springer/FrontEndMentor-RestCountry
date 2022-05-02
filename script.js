@@ -123,7 +123,7 @@ inputValue.addEventListener('input', (e) => {
   function getCountry() {
     if(modRegionObj.length === 0){
       for (num in oriObj) {
-        if (oriObj[num].name.common.toLowerCase().includes(e.target.value)) {
+        if (oriObj[num].name.common.toLowerCase().includes(e.target.value.toLowerCase())) {
           modObj.push(oriObj[num]);
         }
       }
@@ -138,7 +138,7 @@ inputValue.addEventListener('input', (e) => {
       }
     }else{
       for (num in modRegionObj) {
-        if (modRegionObj[num].name.common.toLowerCase().includes(e.target.value)) {
+        if (modRegionObj[num].name.common.toLowerCase().includes(e.target.value.toLowerCase())) {
          modObj.push(modRegionObj[num]);
      
         }
@@ -258,7 +258,7 @@ DarkOrLight.addEventListener("click",(e)=>{
       darkModeBtn[0].children[0].style.border =" solid black" 
       darkModeBtn[0].children[0].style.backgroundColor = "white"
       darkModeBtn[0].children[0].style.color="black"
-      darkModeBtn[0].children[0].children[0].src ="https://cdn-icons.flaticon.com/png/512/4489/premium/4489231.png?token=exp=1651503559~hmac=4f63d565e1fe05956cdae250bb483805"
+      darkModeBtn[0].children[0].children[0].src ="https://cdn-icons.flaticon.com/png/512/5758/premium/5758839.png?token=exp=1651531016~hmac=bfe5d059f4adbc65638260b70d4b2623"
 
 
         for(let i = 0 ; i < divsDark.length; i++){
