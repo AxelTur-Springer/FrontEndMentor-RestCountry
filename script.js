@@ -171,24 +171,24 @@ function deleteChild() {
 }
 
 // managing region filter
-
 const select = document.getElementById('Options');
 const regionOb = [];
 let modRegionObj = [];
 
 select.addEventListener('click', (e) => {
   let { value } = select.options[select.selectedIndex];
-
   function order() {
     value = select.options[select.selectedIndex].value;
-    if (value !== 'selector') {
-      data123(creatorRegion);
-    } else {
+    if (value === 'selector') {
       modRegionObj =[]
       data123(RetrieveCountryData);
+      select.selectedIndex = 0
+
+    } else {
+      data123(creatorRegion);
+
     }
   }
-
   function creatorRegion(data) {
     modRegionObj = [];
     for (num in data) {
@@ -196,7 +196,6 @@ select.addEventListener('click', (e) => {
         modRegionObj.push(data[num]);
       }
     }
-    console.log(modRegionObj);
     divcreator();
   }
 
@@ -212,6 +211,7 @@ select.addEventListener('click', (e) => {
         sortedObjRegion[num].capital
       );
     }
+    
   }
   order();
 });
