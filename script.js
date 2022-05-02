@@ -175,7 +175,7 @@ const select = document.getElementById('Options');
 const regionOb = [];
 let modRegionObj = [];
 
-select.addEventListener('click', (e) => {
+select.addEventListener("change", (e) => {
   let { value } = select.options[select.selectedIndex];
   function order() {
     value = select.options[select.selectedIndex].value;
