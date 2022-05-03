@@ -312,3 +312,5 @@ function disappearPopUp(){
   console.log(popUpFull)
  popUpFull[0].style.display ="none"
 }
+
+//make nav sticky and put the thing under it
