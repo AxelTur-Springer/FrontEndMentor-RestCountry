@@ -5,7 +5,6 @@ function data123(callback) {
       callback(data);
     });
 }
-
 function SortArray(x, y) {
   if (x.name.common < y.name.common) { return -1; }
   if (x.name.common > y.name.common) { return 1; }
@@ -284,6 +283,7 @@ function createPopUp(obj){
   const nameDivinPopUp = document.getElementsByClassName("namePopUp")
   const list1 = document.getElementsByClassName("info1")
   const list2 = document.getElementsByClassName("info2")
+  const flagInPopDiv = document.getElementsByClassName("flagSolo")
   //console.log(obj)
 let name = obj[0].name.common
 let nativeName = obj[0].name.official
@@ -301,6 +301,14 @@ list1[0].children[0].children[1].innerText = `Populacion: ${populacionInPopUp}`
 list1[0].children[0].children[2].innerText = `Region: ${RegionInPopUp}`
 list1[0].children[0].children[3].innerText = `Sub Region: ${subRegion}`
 list1[0].children[0].children[4].innerText = `Capital: ${capitalInPopUp}`
+flagInPopDiv[0].children[0].src = obj[0].flags.png
+popUpFull[0].style.display ="flex"
 
+console.log(obj[0].flags.png)
+}
+const popUpFull =  document.getElementsByClassName("detailCountryInfo")
 
-console.log(populacionInPopUp)}
+function disappearPopUp(){
+  console.log(popUpFull)
+ popUpFull[0].style.display ="none"
+}
