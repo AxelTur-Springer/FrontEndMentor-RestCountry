@@ -217,9 +217,14 @@ margin-top: 1em;
 /* mobile*/
 @media (max-width: 680px){
     .nav{
-        height: 6em;
-        font-size: 0.8em;    
+        height: 8em;
+        font-size: 0.6em;
+       
     }
+    .divP{
+        width: 100%;
+    }
+   
     .searchAndFilter{
         margin-top: 5em;
     padding: 1em 0em;
@@ -242,12 +247,7 @@ margin-top: 1em;
 
     .filter select{
         padding: 1em 1.5em;
-
     }
-
-.countryGridTotal{
-  
-}
 
 .detailCountryInfo{
     margin-top: 0px;
