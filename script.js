@@ -115,6 +115,7 @@ inputValue.addEventListener('input', (e) => {
     if (e.target.value.length > 1) {
       deleteChild();
       getCountry();
+      addingevent()
     } else {
       data123(RetrieveCountryData);
     }
@@ -154,7 +155,6 @@ inputValue.addEventListener('input', (e) => {
       }
     }
     } 
-    
   testing();
 });
 
@@ -210,7 +210,7 @@ select.addEventListener("change", (e) => {
         sortedObjRegion[num].capital
       );
     }
-    
+    addingevent()
   }
   order();
 });

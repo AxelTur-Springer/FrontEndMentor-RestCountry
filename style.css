@@ -104,20 +104,15 @@ ul{
     box-shadow: 0px 0px 5px 0.5px rgba(64, 64, 64, 0.308);
     border-radius: 5px;
     width: 19em;
- 
+    transition: transform .2s;
 }
 
-.Countrys:hover{
-    cursor: pointer;
-  animation: animacionCountrys 0.5s linear forwards;
-
+/*.Countrys:hover{
+transform: scale(1.1);
 }
 
-@keyframes animacionCountrys{
-    100%{
-        transform:scale(1.05)
-       }
-}
+*/
+
 .imgContainer img{
     border-radius:5px 5px 0px 0px;
     width: 100%;
@@ -254,6 +249,7 @@ margin-top: 1em;
     }
 
     .Countrys:hover{
+
       animation: none;
     
     }
