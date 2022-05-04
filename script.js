@@ -236,7 +236,7 @@ DarkOrLight.addEventListener("click",(e)=>{
             darkModeBtn[0].children[0].style.color="black"
             darkModeBtn[0].children[0].children[1].innerText = "Light Mode"
             darkModeBtn[0].children[0].style.border =" solid white" 
-            darkModeBtn[0].children[0].children[0].src ="https://cdn-icons-png.flaticon.com/512/1829/1829191.png"
+            darkModeBtn[0].children[0].children[0].src = "/Assets/icons8-sol-16.png"
           //styling pop up 
           popUpDiv[0].style.backgroundColor="black"
           popUpDiv[0].style.color="white"
@@ -257,7 +257,7 @@ DarkOrLight.addEventListener("click",(e)=>{
       darkModeBtn[0].children[0].style.border =" solid black" 
       darkModeBtn[0].children[0].style.backgroundColor = "white"
       darkModeBtn[0].children[0].style.color="black"
-      darkModeBtn[0].children[0].children[0].src ="https://cdn-icons.flaticon.com/png/512/5758/premium/5758839.png?token=exp=1651531016~hmac=bfe5d059f4adbc65638260b70d4b2623"
+      darkModeBtn[0].children[0].children[0].src ="/Assets/icons8-símbolo-de-la-luna-16.png"
         for(let i = 0 ; i < divsDark.length; i++){
           divsDark[i].className = className
         }
