@@ -45,7 +45,7 @@ background-color: white;
 border-radius: 5px;
 width: 25em;
 }
-.formLupa i {
+.formLupa i img {
     margin-left: 5px;
 }
 .formSearch input{
@@ -217,7 +217,7 @@ margin-top: 1em;
 /* mobile*/
 @media (max-width: 680px){
     .nav{
-        height: 8em;
+        height: 7.5em;
         font-size: 0.7em;
        
     }
