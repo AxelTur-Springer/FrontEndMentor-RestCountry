@@ -217,8 +217,8 @@ margin-top: 1em;
 /* mobile*/
 @media (max-width: 680px){
     .nav{
-        height: 5em;
-        font-size: 1em;    
+        height: 6em;
+        font-size: 0.8em;    
     }
     .searchAndFilter{
         margin-top: 5em;
@@ -269,12 +269,12 @@ margin-top: 1em;
         }
         .textInfo{
             width: 100%;
-            padding: em 2em;
+            padding: 1em 0em;
         }
        
         .info{
             margin-top: 0em;
-            width: 40em;
+            width: 100%;
             display: flex;
             justify-content: space-around;
         }
