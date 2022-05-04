@@ -110,11 +110,11 @@ ul{
 .Countrys:hover{
     cursor: pointer;
   animation: animacionCountrys 0.5s linear forwards;
+
 }
 
 @keyframes animacionCountrys{
     100%{
-        transform-style:preserve-3d;
         transform:scale(1.05)
        }
 }
