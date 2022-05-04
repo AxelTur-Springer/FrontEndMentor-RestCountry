@@ -7,6 +7,9 @@ body{
     background-color: rgb(255, 255, 255);
     font-family: 'Roboto', sans-serif;
 }
+button:hover{
+    cursor: pointer;
+}
 .navPopUp{
     position: fixed;
     top: 0px;
@@ -106,12 +109,13 @@ ul{
 
 .Countrys:hover{
     cursor: pointer;
-  animation: animacionCountrys 1s linear forwards;
+  animation: animacionCountrys 0.5s linear forwards;
 }
 
 @keyframes animacionCountrys{
     100%{
-    
+        transform-style:preserve-3d;
+        transform:scale(1.05)
        }
 }
 .imgContainer img{
