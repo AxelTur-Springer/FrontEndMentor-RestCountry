@@ -9,24 +9,26 @@ body{
 }
 .navPopUp{
     position: fixed;
+    top: 0px;
     width: 100%;
 }
 .nav{
     display: flex;
     justify-content: space-between;
-    height: 4em;
+    height: 5em;
     background-color:white ;
     border-bottom: 2px solid rgb(219, 219, 219);
     box-shadow: 0px 0px 10px 10px rgb(221, 221, 221);
 }
 .nav div{
-    padding: 10px 20px;
+    padding: 25px 25px;
 }
 .divP{
     font-size: 1.7em;
-    font-weight: bold;
+   
 }
 .searchAndFilter{
+    margin-top: 50px;
     display: flex;
     justify-content: space-between;
     padding: 3em;
@@ -149,23 +151,69 @@ display: flex;
     background-color: rgb(52, 52, 52);
 }
 
+.darkmode * {
+    pointer-events: none
+}
 .detailCountryInfo{
-background-color: black;
+background-color: rgb(255, 255, 255);
 width: 100%;
-height: 100vh;
+height: 91.5vh;
 display: none;
 flex-direction: column;
-justify-content: space-around;
-color: white;
+justify-content:center;
+padding: 0em 1em;
+color: rgb(0, 0, 0);
+font-size: 0.9em;
+}
+.backBtn{
+    display: flex;
+    justify-content: center;
+    width: 6em;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+.backBtn div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.backBtn img{
+    width: 1em;
+    height: 1em;
+}
+.backBtn button{
+    border: none;
+    background-color:inherit;
+    padding: 1em;
 }
 .flagAndText{
+    margin-top: 4em;
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 15em;
+    justify-content: center;
+}
+.flagSolo img{
+width: 50em;
+height: 100%;
+}
+.textInfo{
+    width: 100%;
+    padding: 1em 2em;
 }
 .namePopUp{
     font-size: 2em;
 }
+.info{
+    margin-top: 3em;
+    width: 40em;
+    display: flex;
+    justify-content: space-around;
+}
+.info1 ul li{
+margin-top: 1em;
+}
+.info2 ul li{
+    margin-top: 1em;
+    }
 /* mobile*/
 @media (max-width: 680px){
     .nav{
@@ -173,15 +221,15 @@ color: white;
         font-size: 1em;    
     }
     .searchAndFilter{
+        margin-top: 5em;
     padding: 1em 0em;
     justify-content: space-around;
     }
     .formSearch{
-        height: 2em;
+        height: 2.8em;
     }
     .formLupa{
         width: 12em;
-
     }
     .formLupa i {
         margin-left: 0px;
@@ -189,13 +237,51 @@ color: white;
     .formSearch input{
         height: 3.2em;
         width: 12em;
-        margin-left: 5px;
-    
-        
+        margin-left: 5px;   
     }
-    
+
     .filter select{
         padding: 1em 1.5em;
 
     }
+
+.countryGridTotal{
+  
+}
+
+.detailCountryInfo{
+    margin-top: 0px;
+    justify-content: flex-start;
+}
+   .backBtn{
+       margin-top: 1em;
+   }
+       
+        .flagAndText{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+           margin-top: 5px;
+        }
+        .flagSolo img{
+        width: 100%;
+        height: 100%;
+        }
+        .textInfo{
+            width: 100%;
+            padding: em 2em;
+        }
+       
+        .info{
+            margin-top: 0em;
+            width: 40em;
+            display: flex;
+            justify-content: space-around;
+        }
+        .info1 ul li{
+        margin-top: 1em;
+        }
+        .info2 ul li{
+            margin-top: 1em;
+            }
 }

@@ -225,7 +225,8 @@ DarkOrLight.addEventListener("click",(e)=>{
         const darkModeBtn = document.getElementsByClassName("divDark")
         let divsWhite = document.querySelectorAll(".Countrys")
         let divsDark =document.querySelectorAll(".darkmode")
-      
+        const popUpDiv = document.getElementsByClassName("detailCountryInfo")
+  
       if(className=== "Countrys"){
             className = "darkmode"
             body[0].style.backgroundColor =" rgb(22, 21, 29)"
@@ -237,10 +238,14 @@ DarkOrLight.addEventListener("click",(e)=>{
             darkModeBtn[0].children[0].children[1].innerText = "Light Mode"
             darkModeBtn[0].children[0].style.border =" solid white" 
             darkModeBtn[0].children[0].children[0].src ="https://cdn-icons-png.flaticon.com/512/1829/1829191.png"
-
+          //styling pop up 
+          popUpDiv[0].style.backgroundColor="black"
+          popUpDiv[0].style.color="white"
         for(let i = 0 ; i < divsWhite.length; i++){
             divsWhite[i].className = "darkmode"
         }
+        addingevent()
+
     }else if(className==="darkmode"){
       className = "Countrys"
       body[0].style.backgroundColor =" rgb(22, 21, 29)"
@@ -257,54 +262,65 @@ DarkOrLight.addEventListener("click",(e)=>{
         for(let i = 0 ; i < divsDark.length; i++){
           divsDark[i].className = className
         }
+        popUpDiv[0].style.backgroundColor="white"
+        popUpDiv[0].style.color="black"
     }
 })
 
 let countrysToAddEvent = document.getElementById("countryGridTotal");
 function addingevent(){
   for(let i = 0 ; i< countrysToAddEvent.children.length;i++){
-  countrysToAddEvent.children[i].addEventListener("click",createInfoPop)
-  }
-
+  countrysToAddEvent.children[i].addEventListener("click",createInfoPop)  
+}
 } 
 function createInfoPop(e){
+  console.log(e)
   let targetCountry = e.target.children[1].children[0].innerText;
   let countryData;
   //
    async function bringingContryInfo(){
      const response = await fetch(`https://restcountries.com/v3.1/name/${targetCountry}?fullText=true`)
      const obj = await response.json();
-     createPopUp(obj)
+     flagInPopDiv[0].children[0].src = ""
+    createPopUp(obj)
     }
 bringingContryInfo()
 
   }
+  const flagInPopDiv = document.getElementsByClassName("flagSolo")
+
 function createPopUp(obj){
+  popUpFull[0].style.display ="flex"
   const nameDivinPopUp = document.getElementsByClassName("namePopUp")
   const list1 = document.getElementsByClassName("info1")
   const list2 = document.getElementsByClassName("info2")
-  const flagInPopDiv = document.getElementsByClassName("flagSolo")
   //console.log(obj)
 let name = obj[0].name.common
-let nativeName = obj[0].name.official
+let nativeName = obj[0].name.nativeName[Object.keys(obj[0].name.nativeName)[0]].common
 let populacionInPopUp= obj[0].population
 let RegionInPopUp = obj[0].region
 let subRegion= obj[0].subregion
 let capitalInPopUp= obj[0].capital[0]
 let domain= obj[0].tld[0]
-//let languages= obj[0].name.common
-let currencies= obj[0]
+let languages = Object.values(obj[0].languages)
+  let totalLanguages ="";
+  for(num in languages){
+   totalLanguages += languages[num] + " "
+
+  }
+let currencies= Object.values(Object.values(obj[0].currencies)[0])[0]
+
 // putting together
+flagInPopDiv[0].children[0].src = obj[0].flags.svg
 nameDivinPopUp[0].children[0].innerText = name;
 list1[0].children[0].children[0].innerText = `Native Name: ${nativeName}`
 list1[0].children[0].children[1].innerText = `Populacion: ${populacionInPopUp}`
 list1[0].children[0].children[2].innerText = `Region: ${RegionInPopUp}`
 list1[0].children[0].children[3].innerText = `Sub Region: ${subRegion}`
 list1[0].children[0].children[4].innerText = `Capital: ${capitalInPopUp}`
-flagInPopDiv[0].children[0].src = obj[0].flags.png
-popUpFull[0].style.display ="flex"
-
-console.log(obj[0].flags.png)
+list2[0].children[0].children[0].innerText= `Top Level Domain: ${domain}`
+list2[0].children[0].children[1].innerText= `Languages: ${totalLanguages}`
+list2[0].children[0].children[2].innerText= `Currencies: ${currencies}`
 }
 const popUpFull =  document.getElementsByClassName("detailCountryInfo")
 
