@@ -295,25 +295,49 @@ const flagInPopDiv = document.getElementsByClassName("flagSolo")
 const popUpFull =  document.getElementsByClassName("detailCountryInfo")
 
 function createPopUp(obj){
+  console.log(obj[0])
   popUpFull[0].style.display ="flex"
   const nameDivinPopUp = document.getElementsByClassName("namePopUp")
   const list1 = document.getElementsByClassName("info1");
   const list2 = document.getElementsByClassName("info2");
   //assingning values
   let name = obj[0].name.common
-  let nativeName = obj[0].name.nativeName[Object.keys(obj[0].name.nativeName)[0]].common
+  let nativeName;
+  if(Object.keys(obj[0].name).includes("nativeName")){
+    nativeName = obj[0].name.nativeName[Object.keys(obj[0].name.nativeName)[0]].common
+  }
+  else{
+    nativeName = name;
+  }
   let populacionInPopUp= obj[0].population
   let RegionInPopUp = obj[0].region
   let subRegion= obj[0].subregion
-  let capitalInPopUp= obj[0].capital[0]
+  let capitalInPopUp;
+  if(Object.keys(obj[0]).includes("capital")){
+    capitalInPopUp= obj[0].capital[0]
+  }
+  else{
+    capitalInPopUp= " "
+  }
   let domain= obj[0].tld[0]
-  let languages = Object.values(obj[0].languages)
+  let languages;
   let totalLanguages ="";
+  if(Object.keys(obj[0]).includes("languages")){
+    languages = Object.values(obj[0].languages)
+  }
+  else{
+    languages= " "
+  }
   for(num in languages){
    totalLanguages += languages[num] + " "
   }
-  let currencies= Object.values(Object.values(obj[0].currencies)[0])[0];
-  
+  let currencies;
+  if(Object.keys(obj[0]).includes("currencies")){
+    currencies= Object.values(Object.values(obj[0].currencies)[0])[0];
+  }
+  else{
+    currencies= " "
+  }
   (()=>{ // putting together
     flagInPopDiv[0].children[0].src = obj[0].flags.svg
     nameDivinPopUp[0].children[0].innerText = name;
