@@ -159,7 +159,6 @@ inputValue.addEventListener('input', (e) => {
 });
 
 // deleting divs creted
-
 function deleteChild() {
   const e = document.getElementById('countryGridTotal');
   let child = e.lastElementChild;
@@ -267,66 +266,72 @@ DarkOrLight.addEventListener("click",(e)=>{
     }
 })
 
+
+// managing pop up 
 let countrysToAddEvent = document.getElementById("countryGridTotal");
 function addingevent(){
   for(let i = 0 ; i< countrysToAddEvent.children.length;i++){
   countrysToAddEvent.children[i].addEventListener("click",createInfoPop)  
+  }
 }
-} 
+
+let hideShowDivCountry;
 function createInfoPop(e){
-  console.log(e)
   let targetCountry = e.target.children[1].children[0].innerText;
+  //fixedNav[0].style.position="fixed"
+  hideShowDivCountry = e.target
+
   let countryData;
-  //
-   async function bringingContryInfo(){
+   (async function bringingContryInfo(){
      const response = await fetch(`https://restcountries.com/v3.1/name/${targetCountry}?fullText=true`)
      const obj = await response.json();
      flagInPopDiv[0].children[0].src = ""
-    createPopUp(obj)
-    }
-bringingContryInfo()
-
+     createPopUp(obj)
+    })();
   }
-  const flagInPopDiv = document.getElementsByClassName("flagSolo")
+
+
+const flagInPopDiv = document.getElementsByClassName("flagSolo")
+const popUpFull =  document.getElementsByClassName("detailCountryInfo")
 
 function createPopUp(obj){
   popUpFull[0].style.display ="flex"
   const nameDivinPopUp = document.getElementsByClassName("namePopUp")
-  const list1 = document.getElementsByClassName("info1")
-  const list2 = document.getElementsByClassName("info2")
-  //console.log(obj)
-let name = obj[0].name.common
-let nativeName = obj[0].name.nativeName[Object.keys(obj[0].name.nativeName)[0]].common
-let populacionInPopUp= obj[0].population
-let RegionInPopUp = obj[0].region
-let subRegion= obj[0].subregion
-let capitalInPopUp= obj[0].capital[0]
-let domain= obj[0].tld[0]
-let languages = Object.values(obj[0].languages)
+  const list1 = document.getElementsByClassName("info1");
+  const list2 = document.getElementsByClassName("info2");
+  //assingning values
+  let name = obj[0].name.common
+  let nativeName = obj[0].name.nativeName[Object.keys(obj[0].name.nativeName)[0]].common
+  let populacionInPopUp= obj[0].population
+  let RegionInPopUp = obj[0].region
+  let subRegion= obj[0].subregion
+  let capitalInPopUp= obj[0].capital[0]
+  let domain= obj[0].tld[0]
+  let languages = Object.values(obj[0].languages)
   let totalLanguages ="";
   for(num in languages){
    totalLanguages += languages[num] + " "
-
   }
-let currencies= Object.values(Object.values(obj[0].currencies)[0])[0]
-
-// putting together
-flagInPopDiv[0].children[0].src = obj[0].flags.svg
-nameDivinPopUp[0].children[0].innerText = name;
-list1[0].children[0].children[0].innerText = `Native Name: ${nativeName}`
-list1[0].children[0].children[1].innerText = `Populacion: ${populacionInPopUp}`
-list1[0].children[0].children[2].innerText = `Region: ${RegionInPopUp}`
-list1[0].children[0].children[3].innerText = `Sub Region: ${subRegion}`
-list1[0].children[0].children[4].innerText = `Capital: ${capitalInPopUp}`
-list2[0].children[0].children[0].innerText= `Top Level Domain: ${domain}`
-list2[0].children[0].children[1].innerText= `Languages: ${totalLanguages}`
-list2[0].children[0].children[2].innerText= `Currencies: ${currencies}`
+  let currencies= Object.values(Object.values(obj[0].currencies)[0])[0];
+  
+  (()=>{ // putting together
+    flagInPopDiv[0].children[0].src = obj[0].flags.svg
+    nameDivinPopUp[0].children[0].innerText = name;
+    list1[0].children[0].children[0].innerText = `Native Name: ${nativeName}`
+    list1[0].children[0].children[1].innerText = `Populacion: ${populacionInPopUp}`
+    list1[0].children[0].children[2].innerText = `Region: ${RegionInPopUp}`
+    list1[0].children[0].children[3].innerText = `Sub Region: ${subRegion}`
+    list1[0].children[0].children[4].innerText = `Capital: ${capitalInPopUp}`
+    list2[0].children[0].children[0].innerText= `Top Level Domain: ${domain}`
+    list2[0].children[0].children[1].innerText= `Languages: ${totalLanguages}`
+    list2[0].children[0].children[2].innerText= `Currencies: ${currencies}`
+    hideShowDivCountry.style.display = "none"
+  })()
 }
-const popUpFull =  document.getElementsByClassName("detailCountryInfo")
 
 function disappearPopUp(){
-  console.log(popUpFull)
+  hideShowDivCountry.style.display = "initial"
  popUpFull[0].style.display ="none"
 }
 
-//make nav sticky and put the thing under it
+
