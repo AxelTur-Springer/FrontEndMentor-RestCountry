@@ -231,6 +231,35 @@ margin-top: 1em;
     margin-top: 1em;
     }
 /* mobile*/
+
+@media (max-width: 1380px){
+    .flagSolo img{
+        width: 30em;
+        height: 100%;
+        }
+        .info{
+            width: 30em;
+            
+            }
+}
+@media (max-width: 960px){
+    .flagSolo img{
+        width: 25em;
+        height: 100%;
+        }
+        .info{
+            width: 20em;
+            }
+}
+@media (max-width: 750px){
+    .flagSolo img{
+        width: 27em;
+        height: 100%;
+        }
+        .info{
+            width: 19em;
+            }
+}
 @media (max-width: 680px){
     .nav{
         height: 6.5em;
